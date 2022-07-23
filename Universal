@@ -1,0 +1,463 @@
+loadstring(game:HttpGet('https://pastebin.com/raw/WJ6Bg3zE'))()
+-- [Legit Tab UI] ------------------------------------------------------------------------------------------------------------------------------------------------------------
+local LegitTab = library:AddTab("Main"); 
+local LegitColunm1 = LegitTab:AddColumn();
+local LegitMain = LegitColunm1:AddSection("Autotiming")
+
+LegitMain:AddDivider("Aimbot");
+local aimbot = loadstring(game:HttpGet'https://github.com/RunDTM/Zeerox-Aimbot/raw/main/library.lua')()
+aimbot.Players = true
+aimbot.Key = Enum.UserInputType.MouseButton2
+
+LegitMain:AddToggle({text = "enabled", callback = function(value)
+    if value then
+        aimbot.Enabled = true
+    else
+        aimbot.Enabled = false
+    end
+end});
+
+LegitMain:AddSlider({text = "smoothing", min = 0, max = 100, float = 1, value = 0, callback = function(value)
+    aimbot.Smoothing = value
+end});
+
+LegitMain:AddToggle({text = "TeamCheck", callback = function(value)
+    if value then
+        aimbot.TeamCheck = true
+    else
+        aimbot.TeamCheck = false
+    end
+end});
+
+LegitMain:AddToggle({text = "AliveCheck", callback = function(value)
+    if value then
+        aimbot.AliveCheck = true
+    else
+        aimbot.AliveCheck = false
+    end
+end});
+
+LegitMain:AddToggle({text = "VisibilityCheck", callback = function(value)
+    if value then
+        aimbot.VisibilityCheck = true
+    else
+        aimbot.VisibilityCheck = false
+    end
+end});
+
+LegitMain:AddList({text = "Aim part", max = 7, flag = "Aimpart", values = {"Head", "Torso", "Left Arm", "Right Arm", "HumanoidRootPart", "Left Leg", "Right Leg"}, value = "Head", callback = function(v)
+    aimbot.PlayerPart = v
+end});
+
+LegitMain:AddToggle({text = "ShowFOV", callback = function(value)
+    if value then
+        aimbot.ShowFOV = true
+    else
+        aimbot.ShowFOV = false
+    end
+end});
+
+
+LegitMain:AddSlider({text = "fov", min = 0, max = 1000, float = 1, value = 0, callback = function(value)
+    aimbot.FOV = value
+end});
+
+LegitMain:AddColor({text = "FOV Color", flag = "fov color", color = Color3.new(1, 1, 1), callback = function(color)
+    aimbot.FOVCircleColor = color
+end});
+
+
+-- [Visuals Tab UI] ------------------------------------------------------------------------------------------------------------------------------------------------------------
+local VisualsTab = library:AddTab("Visuals"); 
+local VisualsColunm1 = VisualsTab:AddColumn();
+local VisualsMain = VisualsColunm1:AddSection("ESP")
+
+local espLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Sirius/request/library/esp/esp.lua'),true))()
+
+VisualsMain:AddDivider("Settings");
+VisualsMain:AddToggle({text = "Enabled", callback = function(value)
+if value then
+    espLib.Init()
+    espLib.options.enabled = true
+else
+    espLib.options.enabled = false
+end
+end});
+
+VisualsMain:AddToggle({text = "Boxes", callback = function(value)
+    if value then
+        espLib.options.boxes = true
+    else
+        espLib.options.boxes = false
+    end
+end});
+
+
+VisualsMain:AddToggle({text = "Names", callback = function(value)
+    if value then
+        espLib.options.names = true
+    else
+        espLib.options.names = false
+    end
+end});
+
+
+
+VisualsMain:AddToggle({text = "Tracers", callback = function(value)
+    if value then
+        espLib.options.tracers = true
+    else
+        espLib.options.tracers = false
+    end
+end});
+
+
+VisualsMain:AddToggle({text = "Chams", callback = function(value)
+    if value then
+        espLib.options.chams = true
+    else
+        espLib.options.chams = false
+    end
+end});
+
+
+VisualsMain:AddToggle({text = "Healthbars", callback = function(value)
+    if value then
+        espLib.options.healthBars = true
+    else
+        espLib.options.healthBars = false
+    end
+end});
+
+VisualsMain:AddSlider({text = "health bar size", min = 0, max = 10, float = 1, value = 1, callback = function(value)
+	espLib.options.healthBarsSize = value
+end});
+
+VisualsMain:AddToggle({text = "Distance", callback = function(value)
+    if value then
+        espLib.options.distance = true
+    else
+        espLib.options.distance = false
+    end
+end});
+
+local VisualsMain2 = VisualsColunm1:AddSection("Colors")
+
+VisualsMain2:AddColor({text = "Boxes color", flag = "esp boxes color", color = Color3.new(1, 1, 1), callback = function(color)
+    espLib.options.boxesColor = color
+end});
+
+VisualsMain2:AddColor({text = "Names color", flag = "esp name color", color = Color3.new(1, 1, 1), callback = function(color)
+    espLib.options.nameColor = color
+end});
+
+VisualsMain2:AddColor({text = "Tracer color", flag = "esp tracers color", color = Color3.new(1, 1, 1), callback = function(color)
+    espLib.options.tracerColor = color
+end});
+
+VisualsMain2:AddColor({text = "Tracer color", flag = "esp tracers color", color = Color3.new(1, 1, 1), callback = function(color)
+    espLib.options.tracerColor = color
+end});
+
+VisualsMain2:AddColor({text = "chams color", flag = "esp chams color", color = Color3.new(1, 1, 1), callback = function(color)
+    espLib.options.chamsColor = color
+end});
+
+local VisualsMain22 = VisualsColunm1:AddSection("Player")
+
+VisualsMain22:AddButton({text = "Fps boost", callback = function()
+    local decalsyeeted = true
+g = game
+w = workspace
+l = g.Lighting
+t = w.Terrain -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 0
+l.GlobalShadows = false
+l.FogEnd = 9e9
+l.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+local shit = g:GetDescendants()
+for i = 1, #shit do local v = shit[i]
+    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+    elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+        v.Transparency = 1
+    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+        v.Lifetime = NumberRange.new(0)
+    elseif v:IsA("Explosion") then
+        v.BlastPressure = 1
+        v.BlastRadius = 1
+    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+        v.Enabled = false
+    elseif v:IsA("MeshPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+        v.TextureID = 10385902758728957
+    end
+end
+for i, e in pairs(l:GetChildren()) do
+    if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+        e.Enabled = false
+    end
+end
+-- < Services > --
+lighting = game:FindService("Lighting") or game:GetService("Lighting")
+networkSettings = settings().Network
+renderSettings = settings().Rendering
+gameSettings = settings()["Game Options"]
+userGameSettings = UserSettings():FindService("UserGameSettings") or UserSettings():GetService("UserGameSettings")
+-- < Definitions > --
+lagConfiguration = {
+-- FPS increasing
+qualityLevel = Enum.QualityLevel.Level01; -- Up to Level21
+savedQualityLevel = Enum.SavedQualitySetting.QualityLevel1; -- Up to QualityLevel10
+videoQualitySetting = Enum.VideoQualitySettings.LowResolution; -- Gives 15/20 additional FPS, Up to HighResolution
+eagerBulkExecution = false; -- Disables unlimited budget for rendering
+globalShadows = false; -- Disables shadows
+-- Lag decreasing (just in case!)
+incommingReplicationLag = -1000;
+-- funny thing because why not
+hasEverUsedVR = true
+}
+
+local set_hidden_property = sethiddenproperty or set_hidden_prop
+
+function boostAttempt()
+pcall(function() set_hidden_property(lighting, "Technology", Enum.Technology.Compatibility) end)
+-- FPS boost
+renderSettings.QualityLevel = lagConfiguration["qualityLevel"]
+userGameSettings.SavedQualityLevel = lagConfiguration["savedQualityLevel"]
+gameSettings.VideoQuality = lagConfiguration["videoQualitySetting"]
+renderSettings.EagerBulkExecution = lagConfiguration["eagerBulkExecution"]
+lighting.GlobalShadows = lagConfiguration["globalShadows"]
+-- Decreasing lag (just in case!)
+networkSettings.IncommingReplicationLag = lagConfiguration["incommingReplicationLag"]
+-- funny thing
+userGameSettings.HasEverUsedVR = lagConfiguration["hasEverUsedVR"]
+end
+
+boostAttempt()
+end});
+
+VisualsMain22:AddButton({text = "full bright", callback = function()
+    Lighting.Brightness = 2
+	Lighting.ClockTime = 14
+	Lighting.FogEnd = 100000
+	Lighting.GlobalShadows = false
+	Lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+end});
+
+VisualsMain22:AddButton({text = "loop full bright", callback = function()
+	if brightLoop then
+		brightLoop:Disconnect()
+	end
+	local function brightFunc()
+		Lighting.Brightness = 2
+		Lighting.ClockTime = 14
+		Lighting.FogEnd = 100000
+		Lighting.GlobalShadows = false
+		Lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+	end
+
+	brightLoop = RunService.RenderStepped:Connect(brightFunc)
+end});
+
+VisualsMain22:AddButton({text = "noFog", callback = function()
+	if brightLoop then
+		brightLoop:Disconnect()
+	end
+	local function brightFunc()
+		Lighting.Brightness = 2
+		Lighting.ClockTime = 14
+		Lighting.FogEnd = 100000
+		Lighting.GlobalShadows = false
+		Lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+	end
+
+	brightLoop = RunService.RenderStepped:Connect(brightFunc)
+end});
+
+VisualsMain22:AddButton({text = "Server hop", callback = function()
+    local x = {}
+	for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
+	if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
+	x[#x + 1] = v.id
+	end
+	end
+	if #x > 0 then
+	game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, x[math.random(1, #x)])
+	else
+	return notify("Serverhop","Couldn't find a server.")
+	end
+end});
+
+
+
+
+espLib.options = {
+    enabled = false,
+    scaleFactorX = 4,
+    scaleFactorY = 5,
+    font = 2,
+    fontSize = 13,
+    limitDistance = true,
+    maxDistance = 10000,
+    visibleOnly = false,
+    teamCheck = false,
+    teamColor = false,
+    fillColor = nil,
+    whitelistColor = Color3.new(1, 0, 0),
+    outOfViewArrows = false,
+    outOfViewArrowsFilled = false,
+    outOfViewArrowsSize = 25,
+    outOfViewArrowsRadius = 100,
+    outOfViewArrowsColor = Color3.new(1, 1, 1),
+    outOfViewArrowsTransparency = 0.5,
+    outOfViewArrowsOutline = false,
+    outOfViewArrowsOutlineFilled = false,
+    outOfViewArrowsOutlineColor = Color3.new(1, 1, 1),
+    outOfViewArrowsOutlineTransparency = 1,
+    names = false,
+    nameTransparency = 1,
+    nameColor = Color3.new(1, 1, 1),
+    boxes = false,
+    boxesTransparency = 1,
+    boxesColor = Color3.new(1, 1, 1),
+    boxFill = false,
+    boxFillTransparency = 0.5,
+    boxFillColor = Color3.new(1, 1, 1),
+    healthBars = false,
+    healthBarsSize = 1,
+    healthBarsTransparency = 1,
+    healthBarsColor = Color3.new(0, 1, 0),
+    healthText = false,
+    healthTextTransparency = 1,
+    healthTextSuffix = "%",
+    healthTextColor = Color3.new(1, 1, 1),
+    distance = false,
+    distanceTransparency = 1,
+    distanceSuffix = " Studs",
+    distanceColor = Color3.new(1, 1, 1),
+    tracers = false,
+    tracerTransparency = 1,
+    tracerColor = Color3.new(1, 1, 1),
+    tracerOrigin = "Bottom", -- Available [Mouse, Top, Bottom]
+    chams = false,
+    chamsColor = Color3.new(1, 0, 0),
+    chamsTransparency = 0.5,
+}
+
+-- [Library Settings UI] -----------------------------------------------------------------------------------------------------------------------------------------------------
+local SettingsTab = library:AddTab("Settings"); 
+local SettingsColumn = SettingsTab:AddColumn(); 
+local SettingsColumn2 = SettingsTab:AddColumn(); 
+local SettingSection = SettingsColumn:AddSection("Menu"); 
+local ConfigSection = SettingsColumn2:AddSection("Configs");
+local Warning = library:AddWarning({type = "confirm"});
+
+SettingSection:AddBind({text = "Open / Close", flag = "UI Toggle", nomouse = true, key = "RightControl", callback = function()
+    library:Close();
+end});
+
+SettingSection:AddColor({text = "Accent Color", flag = "Menu Accent Color", color = Color3.new(0.599623620510101318359375, 0.447115242481231689453125, 0.97174417972564697265625), callback = function(color)
+    if library.currentTab then
+        library.currentTab.button.TextColor3 = color;
+    end
+    for i,v in pairs(library.theme) do
+        v[(v.ClassName == "TextLabel" and "TextColor3") or (v.ClassName == "ImageLabel" and "ImageColor3") or "BackgroundColor3"] = color;
+    end
+end});
+
+-- [Background List]
+local backgroundlist = {
+    Floral = "rbxassetid://5553946656",
+    Flowers = "rbxassetid://6071575925",
+    Circles = "rbxassetid://6071579801",
+    Hearts = "rbxassetid://6073763717"
+};
+
+-- [Background List]
+local back = SettingSection:AddList({text = "Background", max = 4, flag = "background", values = {"Floral", "Flowers", "Circles", "Hearts"}, value = "Floral", callback = function(v)
+    if library.main then
+        library.main.Image = backgroundlist[v];
+    end
+end});
+
+-- [Background Color Picker]
+back:AddColor({flag = "backgroundcolor", color = Color3.new(), callback = function(color)
+    if library.main then
+        library.main.ImageColor3 = color;
+    end
+end, trans = 1, calltrans = function(trans)
+    if library.main then
+        library.main.ImageTransparency = 1 - trans;
+    end
+end});
+
+-- [Tile Size Slider]
+SettingSection:AddSlider({text = "Tile Size", min = 50, max = 500, value = 50, callback = function(size)
+    if library.main then
+        library.main.TileSize = UDim2.new(0, size, 0, size);
+    end
+end});
+
+-- [Discord Button]
+SettingSection:AddButton({text = "Copy discord invite", callback = function()
+	setclipboard("https://discord.gg/rZwYMJnSau")
+end});
+
+SettingSection:AddButton({text = "made by BigBootyBandit#3102", callback = function()
+	setclipboard("BigBootyBandit#3102")
+end});
+
+-- [Config Box]
+ConfigSection:AddBox({text = "Config Name", skipflag = true});
+
+-- [Config List]
+ConfigSection:AddList({text = "Configs", skipflag = true, value = "", flag = "Config List", values = library:GetConfigs()});
+
+-- [Create Button]
+ConfigSection:AddButton({text = "Create", callback = function()
+    library:GetConfigs();
+    writefile(library.foldername .. "/" .. library.flags["Config Name"] .. library.fileext, "{}");
+    library.options["Config List"]:AddValue(library.flags["Config Name"]);
+end});
+
+-- [Save Button]
+ConfigSection:AddButton({text = "Save", callback = function()
+    local r, g, b = library.round(library.flags["Menu Accent Color"]);
+    Warning.text = "Are you sure you want to save the current settings to config <font color='rgb(" .. r .. "," .. g .. "," .. b .. ")'>" .. library.flags["Config List"] .. "</font>?";
+    if Warning:Show() then
+        library:SaveConfig(library.flags["Config List"]);
+    end
+end});
+
+-- [Load Button]
+ConfigSection:AddButton({text = "Load", callback = function()
+    local r, g, b = library.round(library.flags["Menu Accent Color"]);
+    Warning.text = "Are you sure you want to load config <font color='rgb(" .. r .. "," .. g .. "," .. b .. ")'>" .. library.flags["Config List"] .. "</font>?";
+    if Warning:Show() then
+        library:LoadConfig(library.flags["Config List"]);
+    end
+end});
+
+-- [Delete Button]
+ConfigSection:AddButton({text = "Delete", callback = function()
+    local r, g, b = library.round(library.flags["Menu Accent Color"]);
+    Warning.text = "Are you sure you want to delete config <font color='rgb(" .. r .. "," .. g .. "," .. b .. ")'>" .. library.flags["Config List"] .. "</font>?";
+    if Warning:Show() then
+        local config = library.flags["Config List"];
+        if table.find(library:GetConfigs(), config) and isfile(library.foldername .. "/" .. config .. library.fileext) then
+            library.options["Config List"]:RemoveValue(config);
+            delfile(library.foldername .. "/" .. config .. library.fileext);
+        end
+    end
+end});
+
+-- [Init] --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+library:Init();
+library:selectTab(library.tabs[1]);
